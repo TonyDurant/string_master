@@ -157,6 +157,17 @@ class StringMaster
   def to_s
     modified_string.html_safe
   end
-
+  
+  def linkify_hushtag
+    @modified_string.gsub!(/(^|\s)@(\w+)/) {
+      match          = $1
+      user_name      = $2
+      link_to_resume = resume_path(User.where(name: user_name).first.resumes.last) 
+      case match
+      when /^@/
+        "<a href=\"#{link_to_resume}\">#{user_name}</a>"
+      end
+    }
+  end
 end
 
