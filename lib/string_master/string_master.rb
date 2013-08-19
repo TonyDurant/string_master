@@ -162,10 +162,9 @@ class StringMaster
     @modified_string.gsub!(/(^|\s)@(\w+)/) {
       match          = $1
       user_name      = $2
-      link_to_resume = link_to "Resume", controller: "resumes", action: "show", id: User.where(name: user_name).first.resumes.last
       case match
       when /^@/
-        "<a href=\"#{link_to_resume}\">#{user_name}</a>"
+        "#{space}<a href=\"http://staffforge.ru/resumes/#{user_name}\">@#{user_name}</a>"
       end
     }
   end
