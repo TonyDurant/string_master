@@ -161,7 +161,7 @@ class StringMaster
   def linkify_hushtag
     @modified_string.gsub!(/(^|\s)@(\w+)/) do
       match, user_name = $~[1], $~[2]
-      "#{space}<a href=\"http://staffforge.ru/resumes/#{user_name}\">@#{user_name}</a>"
+      "#<a href=\"http://staffforge.ru/resumes/#{user_name}\">@#{user_name}</a>"
     end
     self
   end
