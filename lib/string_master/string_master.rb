@@ -159,14 +159,10 @@ class StringMaster
   end
   
   def linkify_hushtag
-    @modified_string.gsub!(/(^|\s)@(\w+)/) {
-      match          = $1
-      user_name      = $2
-      case match
-      when /^@/
-        "#{space}<a href=\"http://staffforge.ru/resumes/#{user_name}\">@#{user_name}</a>"
-      end
-    }
+    @modified_string.gsub!(/(^|\s)@(\w+)/) do
+      match, user_name = $~[1], $~[2]
+      "#{space}<a href=\"http://staffforge.ru/resumes/#{user_name}\">@#{user_name}</a>"
+    end
     self
   end
 end
