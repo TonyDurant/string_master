@@ -167,6 +167,7 @@ class StringMaster
         "#{space}<a href=\"http://staffforge.ru/resumes/#{user_name}\">@#{user_name}</a>"
       end
     }
+    self
   end
 end
 
